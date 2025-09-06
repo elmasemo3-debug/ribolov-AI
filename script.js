@@ -8,6 +8,9 @@ async function sendMessage() {
   input.value = "";
 
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
+ console.log("Status:", response.status);
+const data = await response.json();
+console.log("Odgovor:", data);
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -23,3 +26,4 @@ async function sendMessage() {
   const aiText = data.choices[0].message.content;
   messages.innerHTML += `<div class="message ai">AI: ${aiText}</div>`;
 }
+
